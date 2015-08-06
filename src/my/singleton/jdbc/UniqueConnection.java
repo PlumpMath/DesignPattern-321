@@ -11,7 +11,8 @@ public class UniqueConnection {
     private UniqueConnection(String url, String username, String password) {
         try {
             driverLoader();
-            connection = DriverManager.getConnection(url, username, password);
+            String jdbcUrl = urlChecker(url);
+            connection = DriverManager.getConnection(jdbcUrl, username, password);
         }
         catch (SQLException e) {
             System.out.println("연결에 실패하였습니다.");
@@ -35,6 +36,18 @@ public class UniqueConnection {
         catch (ClassNotFoundException e) {
             System.out.println("jdbc 드라이버 로드에 실패하였습니다.");
         }
+    }
+
+    private String urlChecker(String url) {
+        String host = "jdbc:mysql://";
+        String fixedUrl;
+        if (!url.contains(host)) {
+            fixedUrl = host + url;
+        }
+        else {
+            fixedUrl = url;
+        }
+        return fixedUrl;
     }
 
     public static void closeConnection() {
