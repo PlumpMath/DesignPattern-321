@@ -53,6 +53,7 @@ public class UniqueConnection {
     public static void closeConnection() {
         try {
             connection.close();
+            connection = null;
         }
         catch (SQLException e) {
             System.out.println("닫는데 문제가 발생하였습니다.");

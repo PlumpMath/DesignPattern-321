@@ -9,6 +9,7 @@ public class Main {
         String username = "your database username";
         String password = "your database password";
         Connection conn = UniqueConnection.createUniqueConnection(url, username, password);
+        System.out.println(conn);
 
         try {
             Statement stmt = conn.createStatement();
@@ -27,6 +28,26 @@ public class Main {
             System.out.println("fail");
         }
 
+        UniqueConnection.closeConnection();
+
+        try {
+            Statement stmt = conn.createStatement();
+            stmt.close();
+        }
+        catch (SQLException e) {
+            System.out.println("fail to create stmt");
+        }
+
+        Connection conn1 = UniqueConnection.createUniqueConnection(url, username, password);
+        System.out.println(conn1);
+        try {
+            Statement stmt = conn1.createStatement();
+            System.out.println("success to create stmt");
+            stmt.close();
+        }
+        catch (SQLException e) {
+            System.out.println("fail");
+        }
         UniqueConnection.closeConnection();
     }
 }
