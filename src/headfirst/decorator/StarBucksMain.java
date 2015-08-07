@@ -2,19 +2,11 @@ package headfirst.decorator;
 
 public class StarBucksMain {
 
-    private static void printBeverageInfo(Beverage beverage) {
-        String menuName = beverage.getMenuName();
-        System.out.println(menuName);
-        int price = beverage.getPrice();
-        System.out.println(price);
-    }
-
     public static void main(String[] args) {
-        Beverage beverage1 = new Espresso();
+        Beverage esso = new Espresso();
+        esso.printBeverageInfomation();
 
-        printBeverageInfo(beverage1);
-
-        Beverage beverage2 = new Milk(beverage1);
-        printBeverageInfo(beverage2);
+        Beverage latte = new Milk(new Espresso());
+        latte.printBeverageInfomation();
     }
 }
