@@ -1,5 +1,7 @@
 # designPattern
 Reference - Head First Design Pattern
+<br />
+이지만 코드는 다소 변형됩니다.
 
 - Strategy Pattern
 <br />
