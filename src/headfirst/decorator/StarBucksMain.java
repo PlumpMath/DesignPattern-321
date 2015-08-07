@@ -13,5 +13,8 @@ public class StarBucksMain {
         Beverage beverage1 = new Espresso();
 
         printBeverageInfo(beverage1);
+
+        Beverage beverage2 = new Milk(beverage1);
+        printBeverageInfo(beverage2);
     }
 }
