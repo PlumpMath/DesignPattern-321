@@ -1,6 +1,6 @@
 package headfirst.strategy;
 
-public class Main {
+public class DuckSimulatorMain {
 
     private static void printDuckBehavior(Duck duck) {
         duck.display();

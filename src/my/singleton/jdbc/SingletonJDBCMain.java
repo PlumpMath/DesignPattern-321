@@ -2,10 +2,10 @@ package my.singleton.jdbc;
 
 import java.sql.*;
 
-public class Main {
+public class SingletonJDBCMain {
 
     public static void main(String[] args) {
-        String url ="your database url";
+        String url ="your database(mysql) url";
         String username = "your database username";
         String password = "your database password";
         Connection conn = UniqueConnection.createUniqueConnection(url, username, password);
