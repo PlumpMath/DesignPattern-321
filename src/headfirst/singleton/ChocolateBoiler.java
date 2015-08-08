@@ -2,12 +2,21 @@ package headfirst.singleton;
 
 public class ChocolateBoiler {
 
+    private static ChocolateBoiler uniqueBoiler;
+
     private boolean empty;
     private boolean boiled;
 
-    public ChocolateBoiler() {
+    private ChocolateBoiler() {
         empty = true;
         boiled = false;
+    }
+
+    public static ChocolateBoiler getUniqueInstance() {
+        if (uniqueBoiler == null) {
+            uniqueBoiler = new ChocolateBoiler();
+        }
+        return uniqueBoiler;
     }
 
     public void fill() {
