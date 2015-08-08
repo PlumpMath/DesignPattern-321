@@ -2,7 +2,8 @@ package headfirst.singleton;
 
 public class ChocolateBoiler {
 
-    private static ChocolateBoiler uniqueBoiler;
+    private volatile static ChocolateBoiler uniqueBoiler;
+    // DCL(Double Checking Locking) 사용
 
     private boolean empty;
     private boolean boiled;
@@ -14,7 +15,11 @@ public class ChocolateBoiler {
 
     public static ChocolateBoiler getUniqueInstance() {
         if (uniqueBoiler == null) {
-            uniqueBoiler = new ChocolateBoiler();
+            synchronized (ChocolateBoiler.class) {
+                if (uniqueBoiler == null) {
+                    uniqueBoiler = new ChocolateBoiler();
+                }
+            }
         }
         return uniqueBoiler;
     }
