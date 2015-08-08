@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class UniqueConnection {
 
-    private static Connection connection = null;
+    private volatile static Connection connection = null;
 
     private UniqueConnection(String url, String username, String password) {
         try {
@@ -21,7 +21,11 @@ public class UniqueConnection {
 
     public static Connection createUniqueConnection(String url, String username, String password) {
         if (connection == null) {
-            new UniqueConnection(url, username, password);
+            synchronized (UniqueConnection.class) {
+                if (connection == null) {
+                    new UniqueConnection(url, username, password);
+                }
+            }
         }
         else {
             System.out.println("이미 생성되어 있습니다.");
