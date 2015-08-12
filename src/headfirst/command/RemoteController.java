@@ -4,6 +4,7 @@ public class RemoteController {
 
     private Command[] onCommands;
     private Command[] offCommands;
+    private Command undoCommand;
     private int size;
 
     public RemoteController(int size) {
@@ -16,6 +17,7 @@ public class RemoteController {
             onCommands[i] = noCommand;
             offCommands[i] = noCommand;
         }
+        undoCommand = noCommand;
     }
 
     public void setCommand(int selected, Command onCommand, Command offCommand) {
@@ -26,6 +28,7 @@ public class RemoteController {
     public void onButtonPushed(int selected) {
         if (selected < size) {
             onCommands[selected].execute();
+            undoCommand = onCommands[selected];
         }
         else {
             System.out.println("잘못된 명령입니다.");
@@ -35,10 +38,15 @@ public class RemoteController {
     public void offButtonPushed(int selected) {
         if (selected < size) {
             offCommands[selected].execute();
+            undoCommand = offCommands[selected];
         }
         else {
             System.out.println("잘못된 명령입니다.");
         }
+    }
+
+    public void undoButtonPushed() {
+        undoCommand.undo();
     }
 
     public void addCommand(int idx, String location) {

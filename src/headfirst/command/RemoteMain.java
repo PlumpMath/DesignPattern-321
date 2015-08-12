@@ -17,5 +17,8 @@ public class RemoteMain {
 
         controller.onButtonPushed(mapper.get("거실"));
         controller.offButtonPushed(mapper.get("거실"));
+
+        controller.onButtonPushed(mapper.get("방1"));
+        controller.undoButtonPushed();
     }
 }
