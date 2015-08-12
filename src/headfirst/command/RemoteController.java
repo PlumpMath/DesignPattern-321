@@ -5,6 +5,7 @@ public class RemoteController {
     private Command[] onCommands;
     private Command[] offCommands;
     private Command undoCommand;
+    private Command macroCommand;
     private int size;
 
     public RemoteController(int size) {
@@ -18,6 +19,7 @@ public class RemoteController {
             offCommands[i] = noCommand;
         }
         undoCommand = noCommand;
+        macroCommand = new AllOnMacroCommand(onCommands);
     }
 
     public void setCommand(int selected, Command onCommand, Command offCommand) {
@@ -47,6 +49,10 @@ public class RemoteController {
 
     public void undoButtonPushed() {
         undoCommand.undo();
+    }
+
+    public void allOnMacroPushed() {
+        macroCommand.execute();
     }
 
     public void addCommand(int idx, String location) {

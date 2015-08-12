@@ -20,5 +20,8 @@ public class RemoteMain {
 
         controller.onButtonPushed(mapper.get("방1"));
         controller.undoButtonPushed();
+        System.out.println();
+
+        controller.allOnMacroPushed();
     }
 }
