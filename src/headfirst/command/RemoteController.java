@@ -2,19 +2,42 @@ package headfirst.command;
 
 public class RemoteController {
 
-    private Command onCommand;
-    private Command offCommand;
+    private Command[] onCommands;
+    private Command[] offCommands;
+    private int size;
 
-    public void setCommand(Command onCommand, Command offCommand) {
-        this.onCommand = onCommand;
-        this.offCommand = offCommand;
+    public RemoteController(int size) {
+        this.size = size;
+        onCommands = new Command[size];
+        offCommands = new Command[size];
+        Command noCommand = new NoCommand();
+
+        for (int i = 0; i < size; i++) {
+            onCommands[i] = noCommand;
+            offCommands[i] = noCommand;
+        }
     }
 
-    public void onButtonPushed() {
-        onCommand.execute();
+    public void setCommand(int selected, Command onCommand, Command offCommand) {
+        onCommands[selected] = onCommand;
+        offCommands[selected] = offCommand;
     }
 
-    public void offButtonPushed() {
-        offCommand.execute();
+    public void onButtonPushed(int selected) {
+        if (selected < size) {
+            onCommands[selected].execute();
+        }
+        else {
+            System.out.println("잘못된 명령입니다.");
+        }
+    }
+
+    public void offButtonPushed(int selected) {
+        if (selected < size) {
+            onCommands[selected].execute();
+        }
+        else {
+            System.out.println("잘못된 명령입니다.");
+        }
     }
 }

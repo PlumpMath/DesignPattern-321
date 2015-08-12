@@ -7,10 +7,10 @@ public class RemoteMain {
         LightOnCommand lightOnCommand = new LightOnCommand(light);
         LightOffCommand lightOffCommand = new LightOffCommand(light);
 
-        RemoteController controller = new RemoteController();
-        controller.setCommand(lightOnCommand, lightOffCommand);
+        RemoteController controller = new RemoteController(1);
+        controller.setCommand(0, lightOnCommand, lightOffCommand);
 
-        controller.onButtonPushed();
-        controller.offButtonPushed();
+        controller.onButtonPushed(0);
+        controller.offButtonPushed(0);
     }
 }
