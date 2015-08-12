@@ -3,14 +3,11 @@ package headfirst.command;
 public class RemoteMain {
 
     public static void main(String[] args) {
-        Light light = new Light("거실");
-        LightOnCommand lightOnCommand = new LightOnCommand(light);
-        LightOffCommand lightOffCommand = new LightOffCommand(light);
+        String[] locations = {"거실", "부엌", "욕실", "방1", "방2"};
+        RemoteController controller = new RemoteController(locations.length);
+        controller.addCommands(locations);
 
-        RemoteController controller = new RemoteController(1);
-        controller.setCommand(0, lightOnCommand, lightOffCommand);
-
-        controller.onButtonPushed(0);
-        controller.offButtonPushed(0);
+        controller.onButtonPushed(1);
+        controller.offButtonPushed(1);
     }
 }

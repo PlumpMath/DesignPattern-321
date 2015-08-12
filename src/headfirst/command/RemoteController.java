@@ -34,10 +34,25 @@ public class RemoteController {
 
     public void offButtonPushed(int selected) {
         if (selected < size) {
-            onCommands[selected].execute();
+            offCommands[selected].execute();
         }
         else {
             System.out.println("잘못된 명령입니다.");
+        }
+    }
+
+    public void addCommand(int idx, String location) {
+        Light light = new Light(location);
+        setCommand(idx, new LightOnCommand(light), new LightOffCommand(light));
+    }
+    
+    public void addCommands(String[] locations) {
+        for (int i = 0; i < locations.length; i++) {
+            if (i >= size) {
+                System.out.println("더 이상 전등을 등록할 수 없습니다.");
+                break;
+            }
+            addCommand(i, locations[i]);
         }
     }
 }
