@@ -6,4 +6,9 @@ public class Tea extends Beverage {
     public void brew() {
         System.out.println("brewing Tea~~");
     }
+
+    @Override
+    public boolean isWaiting() {
+        return true;
+    }
 }
