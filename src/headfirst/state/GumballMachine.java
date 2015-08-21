@@ -16,6 +16,7 @@ public class GumballMachine {
         soldState = new SoldState(this);
         soldOutState = new SoldOutState(this);
 
+        this.numberOfGumballs = numberOfGumballs;
         if (numberOfGumballs > 0) {
             currentState = noQuarterState;
         }
@@ -39,7 +40,7 @@ public class GumballMachine {
     }
 
     public void releaseBall() {
-        System.out.println("A Gumball comes rolling out the slot....");
+        System.out.println("검볼이 나갑니다아~");
 
         if (numberOfGumballs > 0) {
             numberOfGumballs -= 1;

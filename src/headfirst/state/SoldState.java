@@ -31,7 +31,7 @@ public class SoldState implements State {
         }
         else {
             System.out.println("앗 검볼이 다 떨어졌다...");
-
+            gumballMachine.setState(gumballMachine.getSoldOutState());
         }
     }
 }

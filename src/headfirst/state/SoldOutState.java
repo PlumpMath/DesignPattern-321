@@ -11,11 +11,12 @@ public class SoldOutState implements State {
     @Override
     public void insertQuarter() {
         System.out.println("죄송해요ㅠ. 품절이에욥ㅠㅠ");
+        ejectQuarter();
     }
 
     @Override
     public void ejectQuarter() {
-        System.out.println("죄송해요ㅠ. 품절이에욥ㅠㅠ");
+        System.out.println("동전이 반환됩니다.");
     }
 
     @Override
